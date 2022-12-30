@@ -1,0 +1,203 @@
+extends _layout
+
+block vars
+	- array = {body_class:'', layout_mod:'', sub_keywords:'', title_inner:'HOME'}
+block content_block
+	section.hero 
+		.section_in 
+			.hero_main 
+				h1 Ремонт топливной аппаратуры на заводском оборудовании
+				p Производим ремонт топливной аппаратуры (ТНВД и форсунок) с 1988 года автомобилей: КамАЗ, МАЗ, ПАЗ, ГАЗ, ЗИЛ, комбайнов «Дон», Man, Mercedes, Reno, Hova, Dongfeng, BMW, AUDI, Volkswagen, Toyota, Range Rover.
+				+btn({
+					class: 'hero_btn trigger_form',
+					title: 'Оставить заявку',
+				})
+	section.service 
+		.section_in 
+			ul.service_list
+				-for(i = 0; i < 3; i++)
+					- var serviceTitle = ['Качественный ремонт', 'Компьютерная диагностика', 'Большой опыт']
+					- var serviceTxt = ['В штате нашем штате только квалифицированные специалисты. Гарантируем качество работ.', 'Проводим компьютерную диагностику грузовых и легковых автомобилей, автобусов, спецтехники.', 'Ремонтируем топливную аппаратуру с 1988 года и сотрудничаем с крупными фирмами Краснодарского края.']
+					- var serviceImg = 'i/service/service_' + i + '.svg'
+						li.service_item 
+							.service_item_icon 
+								img(src=`${serviceImg}`, alt="")
+							.service_item_content 
+								p=serviceTitle[i]
+								span=serviceTxt[i]
+	section.clients 
+		.section_in 
+			.clients_main 
+				.section_title 
+					h2 Наши Клиенты
+				.clients_txt.global_txt 
+					p За долгие годы работы с нами успешно сотрудничают крупные фирмы Краснодарского края:
+					p ООО Смоленское, ООО АФ им. Ильича ст. Ирклиевская, ОАО Медвежья гора ст. Дербентская, ООО Терем г. Горячий Ключ, НАО ДСУ-1г. Краснодар, ОАО ФАНАГОРИЯ, ООО Татра-Трансуслуги г. Славянск-на-Кубани, ООО Гарант-Авто г. Горячий Ключ, ООО НК-Монолит г. Новороссийск, ООО Экспресс ст. Северская, ООО Дортранссервис а. Понежукай, ООО МТС ГК Степь ст. Челбаская,  ООО Темпавто сервис г.Краснодар, ООО Стройэнергосервис-Кубань г. Краснодар, АО Путиловец ст.Павловская, ОАО АГРОНОМ, ООО ТЕХНОМИР-Сервис г.Краснодар, ОАО АПСК Гулькевичский, ООО Дорснаб, ООО Дорспецстрой 2002 г. Краснодар, ЗАО Сырокомбинат Тихорецкий.
+	section.sertificate 
+		.section_in 
+			.sertificate_main 
+				.section_title 
+					h3 Сертификаты
+				ul.sertificate_list 
+					-for(i = 0; i < 3; i++)
+						- var sertificateImg = 'i/sertificate/sertificate_' + i + '.jpg'
+						li.sertificate_item 
+							a(href="#")
+								img(src=sertificateImg, alt="")
+	section.rate 
+		.section_in 
+			.rate_main 
+				.section_title 
+					h4 Выберите услугу
+				.rate_head 
+					select.rate_select
+						each item, i in ['Ремонт топливной аппаратуры (Россия)', 'Ремонт топливной аппаратуры (Bosh)', 'Ремонт форсунок', 'Цены на услуги', 'Ремонт форсунок Common Rail', 'Цены на монтаж и демонтаж']
+							option(value=item data-option=`price_${i}`)=item
+				.rate_table_w 
+					.rate_table 
+						ul.table_list_head
+							each item in ['Наименование', 'Завод изготовителя', 'Марка двигателя', 'Цена ремонта (руб.)']
+								li=item 
+						ul.table_list_body 
+							-for(i = 0; i < 5; i++)
+								li.table_body_item
+									input(type="checkbox" name="rate change" id=`rate_${i}`) 
+									label(for=`rate_${i}`)
+										.table_bodyItem_name ТНВД 33-10
+										.table_bodyItem_product ЯЗДА
+										.table_bodyItem_brand КамАЗ 740.10, 740.10-20
+										.table_bodyItem_price 13400
+						.table_botttom 
+							+btn({
+								class: 'table_btn trigger_form',
+								title: 'Оставить заявку',
+							})
+							.table_bottom_preview 
+								.table_bottom_count!='Выбранное кол-во услуг: <span class="count_rate">2</span>'
+								.table_botttom_price!='Стоимость: <span class="count_rate">3000</span>'
+	section.security 
+		.section_in 
+			.security_main 
+				.security_content
+					h4 Наши гарантии
+					strong При полном ремонте ТНВД гарантия 6 месяцев!
+					p На форсунки от Евро 0 до Евро 6 гарантия не распространяется в связи с низким качеством топлива.
+				.security_content_txt
+					ul 
+						li!='<span>16.05.2018</span> Ремонт форсунок BOSCH пьезо ! на автомобили AUDI, BMW , MERCEDES, RANGE ROVER...'
+						li!='<span>22.01.2018</span> В Н И М А Н И Е ! Знак "Движение грузовых запрещено" разрешает проезд на ремонт !'
+						li!='<span>21.03.2017</span> АЗПИ - Сервис Мы официальный представитель АЗПИ. Ремонт продукции Алтайского завода.'
+						li!='<span>25.01.2010</span> РЕМОНТИРУЕМ COMMON RAIL Ремонт форсунок BOSCH, DELPHI, DENSO, АЗПИ, CATERPILLAR, PERKINS 2645A751, 2645A747'
+	section.action 
+		.section_in 
+			.action_main 
+				.action_head 
+					h5 Оставьте заявку
+					p Мы свяжемся с вами в ближайшее время!
+				form.action_form
+					.action_input_group
+						+input({
+								class: 'action_input',
+								place: 'Ваше имя',
+							}) 
+						+input({
+								class: 'action_input',
+								place: 'Ваш телефон',
+								type: 'tel'
+							})
+					.action_submit_group
+						+btn({
+							class: 'action_btn',
+							type: 'submit'
+						})
+						.action_policy!='Отправляя данные, вы соглашаетесь с <a href="#" target="_blank" >политикой конфиденциальности</a>'
+	section.reviews 
+		.secttion_in 
+			.reviews_main 
+				.section_title 
+					h5 Отзывы о нас
+				ul.reviews_list 
+					-for(i = 0; i < 4; i++)
+						if i === 0 
+							li.reviews_item 
+								.reviews_item_head 
+									.reviews_item_img 
+										img(src="i/reviews/reviews_photo.jpg", alt="")
+									.reviews_item_info 
+										span 21.12.2022
+										p Имя Фамилия
+								.reviews_item_txt Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat
+								.reviews_btn_more 
+									p Показать больше
+									.reviews_btnMore_icon 
+										+icon('arrow')
+						else 
+							li.reviews_item 
+								.reviews_item_head 
+									.reviews_item_img 
+										img(src="i/reviews/reviews_photo.jpg", alt="")
+									.reviews_item_info 
+										span 21.12.2022
+										p Имя Фамилия
+								.reviews_item_txt Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat...
+				+btn({
+					title: 'Показать больше',
+					class: 'reviews_more'
+				})
+	section.gallery 
+		.section_in 
+			.gallery_head 
+				.section_title 
+					h6 Галерея
+				.gallery_nav 
+					.gallery_nav_btn.nav_prev 
+						+icon('arrow-slider')
+					.gallery_nav_btn.nav_next 
+						+icon('arrow-slider')
+			.gallery_slider.swiper 
+				.swiper-wrapper
+					-for(i = 0; i < 12; i++) 
+						.swiper-slide 
+							img(src="i/gallery/gallery.jpg", alt="")
+	section.contacts 
+		.section_in 
+			.contacts_main 
+				.section_title 
+					h6 Наши Контакты
+				.contacts_info 
+					ul.contacts_list_info 
+						li 
+							p Телефон
+							ul 
+								each item in ['8 (902) 408-93-93', '8 (918) 461-08-43']
+									li 
+										a(href="#")=item 
+						li 
+							p Почта
+							ul 
+								li 
+									a(href="#") tps-service@yandex.ru
+						li 
+							p Адрес
+							ul 
+								li Краснодарский край, ст. Динская, ул. Железнодорожная, 265/3
+						li 
+							p Доп. тел/факс
+							ul 
+								each item in ['8 (86162) 6-32-37', '8 (86162) 5-48-50']
+									li 
+										a(href="#")=item
+						li 
+							p Бухгалтерия
+							ul 
+								li 
+									a(href="#") 8 (908) 678-25-85
+						li 
+							p Представительство: поворот с трассы М4 в ст. Павловскую
+							ul 
+								each item in ['8-861-91-5-33-18', '8-902-405-87-55']
+									li 
+										a(href="#")=item
+	.map 
+		<script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Ac7127972f7f6e40667e37af3bd1ea971eabfa66374c92d253f88dc6ea76b809c&amp;width=100%25&amp;height=100%&amp;lang=ru_RU&amp;scroll=false"></script>		
+				

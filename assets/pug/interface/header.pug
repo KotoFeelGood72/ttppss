@@ -1,0 +1,21 @@
+header.header 
+	.section_in 
+		.header_main
+			.header_logo 
+				a(href="#") ТПС-СЕРВИС
+			nav.header_nav 
+				ul
+					each item in ['Клиенты', 'Услуги', 'Отзывы', 'Галерея', 'Контакты']
+						li 
+							a(href="#")=item 
+			.header_phone_w 
+				.header_phone 
+					a(href="#") 8 (902) 408-93-93
+				.header_phoneToggle 
+					+icon('arrow')
+				ul.header_phone_list 
+						each item in ['8 (902) 408-93-93', '8 (902) 408-93-93']
+							li 
+								a(href="#")=item
+			
+				

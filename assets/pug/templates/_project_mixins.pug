@@ -1,0 +1,17 @@
+
+
+// Btn
+mixin btn(data)
+	.btn(class=data.class) 
+		button(type=data.type ? type=data.type : type="button")
+			p=data.title
+			.btn_icon 
+				+icon('arrow')
+
+
+
+
+// Mixin input
+mixin input(data)
+	.global_input(class=data.class)
+		input(type=data.type ? type=data.type : type="text" placeholder=data.place)

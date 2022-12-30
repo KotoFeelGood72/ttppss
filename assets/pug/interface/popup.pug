@@ -1,0 +1,23 @@
+.popup 
+	.popup_bg 
+	.popup_main
+		.popup_close 
+			+icon('close') 
+		.popup_main_head 
+			h3 Оставьте заявку
+			p Мы свяжемся с вами в ближайшее время!
+		form.popup_main_form
+			+input({
+				place: 'Ваше имя',
+				class: 'popup_input'
+			})
+			+input({
+				place: 'Ваш телефон',
+				type: 'tel',
+				class: 'popup_input'
+			})
+			+btn({
+					class: 'popup_btn',
+					type: 'submit'
+				})
+			.popup_policy!='Отправляя данные, вы соглашаетесь с <a href="#" target="_blank" >политикой конфиденциальности</a>'
