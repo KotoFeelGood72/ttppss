@@ -1,9 +1,233 @@
 .header {
-	position: absolute;
+	position: fixed;
 	top: 0;
 	left: 0;
 	height: $header;
 	width: 100%;
 	will-change: transform;
 	@include z-index(header);
+	color: $white;
+	@include bp($point_2) {
+		height: $header_mob;
+		@include flex-center;
+	}
+	a {
+		color: inherit
+	}
+
+	&.fixed {
+		background-color: $dark;
+	}
+
+	&.dark {
+		background-color: $dark!important;
+
+		.header_burger {
+			span {
+
+				max-width: 100%;
+				top: 50%;
+				transform: translateY(-50%) rotate(-45deg);
+				&:nth-child(3) {
+					bottom: auto;
+					top: 50%;
+					transform: translateY(-50%) rotate(45deg);
+				}
+				&:nth-child(2) {
+					display: none;
+				}
+			}
+		}
+	}
+}
+
+
+.header_main {
+	@include flex-space;
+	padding: 1.9rem 0;
+	@include bp($point_2) {
+		padding: 1.2rem 0;
+		// position: relative;
+	}
+}
+.header_logo {
+	margin-right: 8rem;
+	@include bp($point_2) {
+		margin-right: 2rem;
+	}
+	a {
+		font-size: 3rem;
+		font-family: $font_3;
+		@include bp($point_2) {
+			font-size: 2.4rem;
+		}
+		@include bp($point_4) {
+			font-size: 1.8rem;
+		}
+	}
+}
+
+.header_burger {
+	display: none;
+	position: relative;
+	@include bp($point_2) {
+		display: block;
+		width: 3rem;
+		height: 2.2rem;
+		// position: relative;
+		// z-index: 2;
+	}
+
+
+	span {
+		width: 100%;
+		position: absolute;
+		top: 0;
+		right: 0;
+		border-bottom: .3rem solid $white;
+		&:nth-child(1) {
+
+		}
+		&:nth-child(2) {
+			top: 50%;
+			transform: translateY(-50%);
+			max-width: 75%;
+		}
+		&:nth-child(3) {
+			max-width:50%;
+			top: auto;
+			bottom: 0;
+		}
+	}
+}
+.header_nav {
+	margin-right: 10.5rem;
+	@include bp($point_2) {
+		order: 3;
+		// position: relative;
+		margin-right: 0;
+		width: 4rem;
+		// flex: 1;
+		height: $header_mob;
+		@include flex-end;
+	}
+	ul {
+		@include flex-start;
+		@include bp($point_2) {
+			position: absolute;
+			top: calc(100%);
+			right: 0;
+			width: 100%;
+			background-color: $dark;
+			padding: 2rem;
+			opacity: 0;
+			visibility: hidden;
+			transform: translateY(5rem);
+			display: block;
+		}
+		&.visible {
+			opacity: 1;
+			visibility: visible;
+			transform: translateY(0);
+		}
+		li {
+			a {
+				font-size: 2rem;
+				font-weight: 500;
+				@include bp($point_2) {
+					font-size: 1.6rem;
+					padding: 1.5rem 0;
+					// margin: 0 0 1.5rem 0;
+					display: block;
+				}
+			}
+			&:not(:last-child) {
+				margin-right: 7rem;
+				@include bp($point_2) {
+					margin-right: 0;
+					border-bottom: .1rem solid rgba(255, 255, 255, 0.267);
+				}
+			}
+		}
+	}
+}
+.header_phone_w {
+	position: relative;
+
+	&.visible {
+		.header_phoneToggle {
+			transform: rotate(180deg);
+		}
+		.header_phone_list {
+			transform: translateY(0);
+			opacity: 1;
+			visibility: visible;
+		}
+	}
+
+}
+.header_phone {
+	a {
+		padding: 1.5rem 6.6rem 1.5rem 3rem;
+		background-color: $blue;
+		color: $white;
+		display: flex;
+		@include bp($point_2) {
+			padding: 1rem 3rem;
+			font-size: 1.6rem;
+		}
+		@include bp($point_4) {
+			font-size: 1.4rem;
+			padding: .7rem 1.5rem;
+		}
+	}
+}
+.header_phoneToggle {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 6.6rem;
+	height: 100%;
+	color: $white;
+	@include flex-center;
+	cursor: pointer;
+	transition: all .3s ease;
+	@include bp($point_2) {
+		display: none;
+	}
+	svg {
+		height: .9rem;
+		width: 1.6rem;
+		pointer-events: none;
+	}
+}
+.icon {
+}
+.icon-arrow {
+}
+.header_phone_list {
+	position: absolute;
+	top: calc(100% + 1rem);
+	background-color: #f5f5f5;
+	box-shadow: 0 .4rem 4.1rem rgba(34, 34, 34, 0.2);
+	width: 100%;
+	opacity: 0;
+	visibility: hidden;
+	transition: all .3s ease;
+	transform: translateY(-2rem);
+	li {
+		&:not(:last-child) {
+			border-bottom: .1rem solid rgba(0, 0, 0, 0.158);
+		}
+		a {
+			padding: 1.5rem 3.9rem;
+			display: block;
+			color: $dark;
+			transition: all .3s ease;
+			&:hover {
+				background-color: rgb(223, 223, 223);
+				color: $blue;
+			}
+		}
+	}
 }

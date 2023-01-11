@@ -1,17 +1,18 @@
 // Global 
-$header: 6rem;
-$footer: 22.8rem;
+$header: 9.5rem;
+$footer: 6.8rem;
 
 // Mobile
-$header_mob: 6rem;
+$header_mob: 7rem;
 $footer_mob: 10rem;
 
 //---------------------------------------------fonts
 $font_path: "../fonts/";
-$font_1: 'Roboto-Light', sans-serif;
-$font_11: 'Roboto-Regular', sans-serif;
-$font_2: 'Roboto-Medium', serif;
-$font_3: 'Roboto-Bold', serif;
+$font_1: 'Noto-Sans', sans-serif;
+$font_11: 'NotoSans-Medium', sans-serif;
+$font_111: 'NotoSans-SemiBold', sans-serif;
+$font_2: 'Play-Regular', sans-serif;
+$font_3: 'Play-Bold', sans-serif;
 
 $font_size_base: 1.8rem;
 //---------------------------------------------fonts###
@@ -19,13 +20,15 @@ $font_size_base: 1.8rem;
 //---------------------------------------------colors
 $white: #fff;
 $black: #000;
-$dark: #282828;
+$dark: #222222;
+$blue: #0067C6;
+$grey: #A4A4A4;
 $trans: transparent;
 
 
 
-$color_text_base: $black;
-$color_link_base: $black;
+$color_text_base: $dark;
+$color_link_base: $dark;
 $body_bg: $white;
 //---------------------------------------------colors###
 
@@ -40,7 +43,7 @@ $z-index: (
 //---------------------------------------------z-index###
 
 //---------------------------------------------layout
-$page_width: 132.1rem;
+$page_width: 132rem;
 
 //---------------------------------------------layout###
 
@@ -65,7 +68,13 @@ $input_offset: 0 2rem;
 $input_font_size: $font_size_base;
 $input_border_color: #ccc;
 $input_border_color_active: $dark;
-$input_placeholder_color: rgba($dark, .5);
+$input_placeholder_color: rgba($dark, .7);
 $input_text_color: $dark;
 $input_radius: $gl_radius;
 //---------------------------------------------forms###
+
+
+
+
+$xxl-mb: 13rem;
+$section_mb: 6rem;

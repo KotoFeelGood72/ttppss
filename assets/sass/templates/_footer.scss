@@ -4,4 +4,90 @@
 	flex: 0 0 auto;
 	will-change: transform;
 	position: relative;
+	background-color: $dark;
+	font-size: 1.6rem;
+	@include bp($point_2) {
+		font-size: 1.4rem;
+		min-height: 100%;
+	}
+	@include bp($point_4) {
+		font-size: 1.2rem;
+	}
+	* {
+		color: $white;
+	}
+}
+
+
+
+.map {
+	width: 100%;
+	height: 59.6rem;
+	@include bp($point_4) {
+		max-height: 40rem;
+	}
+	#map {
+		width: 100%;
+		height: 100%;
+	}
+}
+
+
+.footer {
+}
+.section_in {
+}
+.footer_main {
+	padding: 2.2rem 0 2.4rem 0;
+	@include flex-space;
+	@include bp($point_4) {
+		flex-direction: column;
+		padding: 4rem 0;
+	}
+}
+.footer_col_left {
+	@include flex-start;
+	@include bp($point_4) {
+		flex-direction: column;
+		width: 100%;
+		align-items: center;
+	}
+}
+.footer_copyright {
+	margin-right: 7.7rem;
+	@include bp($point_4) {
+		margin-right: 0;
+	}
+}
+.footer_policy {
+	@include bp($point_4) {
+		margin: 1rem 0;
+		padding: 1rem 0;
+		border-top: .1rem solid rgba(255, 255, 255, 0.11);
+		border-bottom: .1rem solid rgba(255, 255, 255, 0.11);
+		width: 100%;
+		text-align: center;
+	}
+	a {
+		text-decoration: underline;
+		@include bp($point_4) {
+			text-decoration: none;
+		}
+		&:hover {
+			text-decoration: none;
+		}
+	}
+}
+
+.footer_arkada-web {
+	transition: all .3s ease;
+	@include bp($point_2) {
+		max-width: 23rem;
+	}
+	@include bp($point_4) {
+		max-width: 18rem;
+	}
+	&:hover {
+		opacity: .7;
+	}
 }

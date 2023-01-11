@@ -1,7 +1,7 @@
 .popup 
-	.popup_bg 
+	.popup_bg.remove_popup 
 	.popup_main
-		.popup_close 
+		.popup_close.remove_popup 
 			+icon('close') 
 		.popup_main_head 
 			h3 Оставьте заявку
@@ -18,6 +18,7 @@
 			})
 			+btn({
 					class: 'popup_btn',
-					type: 'submit'
+					type: 'submit',
+					title: 'Оставить заявку'
 				})
 			.popup_policy!='Отправляя данные, вы соглашаетесь с <a href="#" target="_blank" >политикой конфиденциальности</a>'

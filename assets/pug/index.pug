@@ -42,7 +42,7 @@ block content_block
 					-for(i = 0; i < 3; i++)
 						- var sertificateImg = 'i/sertificate/sertificate_' + i + '.jpg'
 						li.sertificate_item 
-							a(href="#")
+							a(href=sertificateImg data-fancybox)
 								img(src=sertificateImg, alt="")
 	section.rate 
 		.section_in 
@@ -50,9 +50,9 @@ block content_block
 				.section_title 
 					h4 Выберите услугу
 				.rate_head 
-					select.rate_select
+					select.rate_select#rate_select
 						each item, i in ['Ремонт топливной аппаратуры (Россия)', 'Ремонт топливной аппаратуры (Bosh)', 'Ремонт форсунок', 'Цены на услуги', 'Ремонт форсунок Common Rail', 'Цены на монтаж и демонтаж']
-							option(value=item data-option=`price_${i}`)=item
+							option(value=item data-type=`type_${i}`)=item
 				.rate_table_w 
 					.rate_table 
 						ul.table_list_head
@@ -60,13 +60,13 @@ block content_block
 								li=item 
 						ul.table_list_body 
 							-for(i = 0; i < 5; i++)
-								li.table_body_item
-									input(type="checkbox" name="rate change" id=`rate_${i}`) 
+								li.table_body_item(data-id=`type_${i}` data-price=`13${i}10`)
+									input(type="checkbox" name="rate change" id=`rate_${i}` oninput="calcParams();") 
 									label(for=`rate_${i}`)
 										.table_bodyItem_name ТНВД 33-10
 										.table_bodyItem_product ЯЗДА
 										.table_bodyItem_brand КамАЗ 740.10, 740.10-20
-										.table_bodyItem_price 13400
+										.table_bodyItem_price!=`1340${i}`
 						.table_botttom 
 							+btn({
 								class: 'table_btn trigger_form',
@@ -74,20 +74,21 @@ block content_block
 							})
 							.table_bottom_preview 
 								.table_bottom_count!='Выбранное кол-во услуг: <span class="count_rate">2</span>'
-								.table_botttom_price!='Стоимость: <span class="count_rate">3000</span>'
+								.table_botttom_price!='Стоимость: <span class="count_price">3000</span>'
 	section.security 
-		.section_in 
-			.security_main 
-				.security_content
-					h4 Наши гарантии
-					strong При полном ремонте ТНВД гарантия 6 месяцев!
-					p На форсунки от Евро 0 до Евро 6 гарантия не распространяется в связи с низким качеством топлива.
-				.security_content_txt
-					ul 
-						li!='<span>16.05.2018</span> Ремонт форсунок BOSCH пьезо ! на автомобили AUDI, BMW , MERCEDES, RANGE ROVER...'
-						li!='<span>22.01.2018</span> В Н И М А Н И Е ! Знак "Движение грузовых запрещено" разрешает проезд на ремонт !'
-						li!='<span>21.03.2017</span> АЗПИ - Сервис Мы официальный представитель АЗПИ. Ремонт продукции Алтайского завода.'
-						li!='<span>25.01.2010</span> РЕМОНТИРУЕМ COMMON RAIL Ремонт форсунок BOSCH, DELPHI, DENSO, АЗПИ, CATERPILLAR, PERKINS 2645A751, 2645A747'
+		.section_in
+			.security_main_w 
+				h4 Наши гарантии
+				.security_main 
+					.security_content
+						span При полном ремонте ТНВД гарантия 6 месяцев!
+						p На форсунки от Евро 0 до Евро 6 гарантия не распространяется в связи с низким качеством топлива.
+					.security_content_txt
+						ul 
+							li!='<span>16.05.2018</span> Ремонт форсунок BOSCH пьезо ! на автомобили AUDI, BMW , MERCEDES, RANGE ROVER...'
+							li!='<span>22.01.2018</span> В Н И М А Н И Е ! Знак "Движение грузовых запрещено" разрешает проезд на ремонт !'
+							li!='<span>21.03.2017</span> АЗПИ - Сервис Мы официальный представитель АЗПИ. Ремонт продукции Алтайского завода.'
+							li!='<span>25.01.2010</span> РЕМОНТИРУЕМ COMMON RAIL Ремонт форсунок BOSCH, DELPHI, DENSO, АЗПИ, CATERPILLAR, PERKINS 2645A751, 2645A747'
 	section.action 
 		.section_in 
 			.action_main 
@@ -97,22 +98,23 @@ block content_block
 				form.action_form
 					.action_input_group
 						+input({
-								class: 'action_input',
-								place: 'Ваше имя',
+							class: 'action_input',
+							place: 'Ваше имя',
 							}) 
 						+input({
-								class: 'action_input',
-								place: 'Ваш телефон',
-								type: 'tel'
+							class: 'action_input',
+							place: 'Ваш телефон',
+							type: 'tel'
 							})
 					.action_submit_group
 						+btn({
 							class: 'action_btn',
-							type: 'submit'
+							type: 'submit',
+							title: 'Оставить заявку'
 						})
 						.action_policy!='Отправляя данные, вы соглашаетесь с <a href="#" target="_blank" >политикой конфиденциальности</a>'
 	section.reviews 
-		.secttion_in 
+		.section_in 
 			.reviews_main 
 				.section_title 
 					h5 Отзывы о нас
@@ -126,7 +128,7 @@ block content_block
 									.reviews_item_info 
 										span 21.12.2022
 										p Имя Фамилия
-								.reviews_item_txt Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat
+								.reviews_item_txt!='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna. </br></br>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat... Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna. </br></br>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat... Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna. </br></br>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat...' 
 								.reviews_btn_more 
 									p Показать больше
 									.reviews_btnMore_icon 
@@ -139,7 +141,7 @@ block content_block
 									.reviews_item_info 
 										span 21.12.2022
 										p Имя Фамилия
-								.reviews_item_txt Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat...
+								.reviews_item_txt!='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna. </br></br>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat...' 
 				+btn({
 					title: 'Показать больше',
 					class: 'reviews_more'
@@ -150,9 +152,9 @@ block content_block
 				.section_title 
 					h6 Галерея
 				.gallery_nav 
-					.gallery_nav_btn.nav_prev 
+					.gallery_nav_btn.nav_prev.btn 
 						+icon('arrow-slider')
-					.gallery_nav_btn.nav_next 
+					.gallery_nav_btn.nav_next.btn 
 						+icon('arrow-slider')
 			.gallery_slider.swiper 
 				.swiper-wrapper
@@ -198,6 +200,5 @@ block content_block
 								each item in ['8-861-91-5-33-18', '8-902-405-87-55']
 									li 
 										a(href="#")=item
-	.map 
-		<script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Ac7127972f7f6e40667e37af3bd1ea971eabfa66374c92d253f88dc6ea76b809c&amp;width=100%25&amp;height=100%&amp;lang=ru_RU&amp;scroll=false"></script>		
-				
+	.map
+		<script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Ac7127972f7f6e40667e37af3bd1ea971eabfa66374c92d253f88dc6ea76b809c&amp;width=100%25&amp;height=100%&amp;lang=ru_RU&amp;scroll=false"></script>

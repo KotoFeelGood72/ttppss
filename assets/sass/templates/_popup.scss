@@ -1,0 +1,103 @@
+.popup {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	@include z-index(popup);
+	@include flex-center;
+	transition: all .3s ease;
+	opacity: 0;
+	visibility: hidden;
+	@include bp($point_2) {
+		max-width: 100%;
+		padding: 2rem;
+	}
+	&.visible {
+		opacity: 1;
+		visibility: visible;
+		.popup_main {
+			transform: translateX(0);
+		}
+	}
+}
+
+.popup_bg {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: $dark;
+	opacity: .7;
+}
+
+.popup_main {
+	background-color: $white;
+	position: relative;
+	padding: 6rem 8.8rem 7rem 8.8rem;
+	max-width: 57.2rem;
+	transform: translateX(-10rem);
+	transition: all .4s ease;
+	@include bp($point_4) {
+		padding: 4rem 2rem;
+		transform: translateX(-2rem);
+	}
+}
+
+.popup_main_head {
+	text-align: center;
+	h3 {
+		margin-bottom: 1rem;
+	}
+	margin-bottom: 4rem;
+}
+
+.popup_close {
+	position: absolute;
+	top: 2.3rem;
+	right: 2.5rem;
+	width: 2.5rem;
+	height: 2.5rem;
+	@include flex-center;
+	color: #A40000;
+	cursor: pointer;
+	transition: all .3s ease;
+	@include bp($point_4) {
+		width: 2rem;
+		height: 2rem;
+	}
+	&:hover {
+		color: $dark;
+	}
+}
+
+.popup_input {
+	margin-bottom: 2rem;
+}
+
+.popup_btn {
+	width: 100%;
+	margin-bottom: 1.5rem;
+	button {
+		color: $white;
+		width: 100%;
+		justify-content: center;
+	}
+	.btn_icon {
+		right: 10.8rem;
+		top: 52%;
+	}
+}
+
+.popup_policy {
+	font-size: 1.6rem;
+	opacity: .7;
+	// max-width: 35rem;
+	a {
+		text-decoration: underline;
+		&:hover {
+			text-decoration: none;
+		}
+	}
+}

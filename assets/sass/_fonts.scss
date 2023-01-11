@@ -1,4 +1,8 @@
-@include font_face('Roboto-Light', 'Roboto-Light', $font_path, 300);
-@include font_face('Roboto-Regular', 'Roboto-Regular', $font_path, 400);
-@include font_face('Roboto-Medium', 'Roboto-Medium', $font_path, 500);
-@include font_face('Roboto-Bold', 'Roboto-Bold', $font_path, 600);
+@include font_face('Play-Regular', 'Play-Regular', $font_path, 400);
+@include font_face('Play-Bold', 'Play-Bold', $font_path, 700);
+
+@include font_face('NotoSans-Medium', 'NotoSans-Medium', $font_path, 500);
+
+@include font_face('NotoSans-Regular', 'NotoSans-Regular', $font_path, 400);
+
+@include font_face('NotoSans-SemiBold', 'NotoSans-SemiBold', $font_path, 600);

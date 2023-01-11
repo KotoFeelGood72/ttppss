@@ -9,7 +9,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
     <meta name="SKYPE_TOOLBAR" content="SKYPE_TOOLBAR_PARSER_COMPATIBLE"/>
     <meta name="apple-mobile-web-app-capable" content="yes"/>
-    <meta name="format-detection" content="telephone=no"/>
+    <meta name="format-detection" content="telephone=no"/><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" media="all" href="styles/main_global.css"/>
   </head>
   <body>
@@ -17,7 +19,8 @@
       <div class="section_in"> 
         <div class="header_main">
           <div class="header_logo"> <a href="#">ТПС-СЕРВИС</a></div>
-          <nav class="header_nav"> 
+          <nav class="header_nav">
+            <div class="header_burger"> <span> </span><span> </span><span> </span></div>
             <ul>
               <li> <a href="#">Клиенты</a></li>
               <li> <a href="#">Услуги</a></li>
@@ -105,9 +108,9 @@
                 <h3>Сертификаты</h3>
               </div>
               <ul class="sertificate_list"> 
-                <li class="sertificate_item"> <a href="#"><img src="i/sertificate/sertificate_0.jpg" alt=""></a></li>
-                <li class="sertificate_item"> <a href="#"><img src="i/sertificate/sertificate_1.jpg" alt=""></a></li>
-                <li class="sertificate_item"> <a href="#"><img src="i/sertificate/sertificate_2.jpg" alt=""></a></li>
+                <li class="sertificate_item"> <a href="i/sertificate/sertificate_0.jpg" data-fancybox><img src="i/sertificate/sertificate_0.jpg" alt=""></a></li>
+                <li class="sertificate_item"> <a href="i/sertificate/sertificate_1.jpg" data-fancybox><img src="i/sertificate/sertificate_1.jpg" alt=""></a></li>
+                <li class="sertificate_item"> <a href="i/sertificate/sertificate_2.jpg" data-fancybox><img src="i/sertificate/sertificate_2.jpg" alt=""></a></li>
               </ul>
             </div>
           </div>
@@ -119,13 +122,13 @@
                 <h4>Выберите услугу</h4>
               </div>
               <div class="rate_head"> 
-                <select class="rate_select">
-                  <option value="Ремонт топливной аппаратуры (Россия)" data-option="price_0">Ремонт топливной аппаратуры (Россия)</option>
-                  <option value="Ремонт топливной аппаратуры (Bosh)" data-option="price_1">Ремонт топливной аппаратуры (Bosh)</option>
-                  <option value="Ремонт форсунок" data-option="price_2">Ремонт форсунок</option>
-                  <option value="Цены на услуги" data-option="price_3">Цены на услуги</option>
-                  <option value="Ремонт форсунок Common Rail" data-option="price_4">Ремонт форсунок Common Rail</option>
-                  <option value="Цены на монтаж и демонтаж" data-option="price_5">Цены на монтаж и демонтаж</option>
+                <select class="rate_select" id="rate_select">
+                  <option value="Ремонт топливной аппаратуры (Россия)" data-type="type_0">Ремонт топливной аппаратуры (Россия)</option>
+                  <option value="Ремонт топливной аппаратуры (Bosh)" data-type="type_1">Ремонт топливной аппаратуры (Bosh)</option>
+                  <option value="Ремонт форсунок" data-type="type_2">Ремонт форсунок</option>
+                  <option value="Цены на услуги" data-type="type_3">Цены на услуги</option>
+                  <option value="Ремонт форсунок Common Rail" data-type="type_4">Ремонт форсунок Common Rail</option>
+                  <option value="Цены на монтаж и демонтаж" data-type="type_5">Цены на монтаж и демонтаж</option>
                 </select>
               </div>
               <div class="rate_table_w"> 
@@ -137,8 +140,8 @@
                     <li>Цена ремонта (руб.)</li>
                   </ul>
                   <ul class="table_list_body"> 
-                    <li class="table_body_item">
-                      <input type="checkbox" name="rate change" id="rate_0">
+                    <li class="table_body_item" data-id="type_0" data-price="13010">
+                      <input type="checkbox" name="rate change" id="rate_0" oninput="calcParams();">
                       <label for="rate_0">
                         <div class="table_bodyItem_name">ТНВД 33-10</div>
                         <div class="table_bodyItem_product">ЯЗДА</div>
@@ -146,40 +149,40 @@
                         <div class="table_bodyItem_price">13400</div>
                       </label>
                     </li>
-                    <li class="table_body_item">
-                      <input type="checkbox" name="rate change" id="rate_1">
+                    <li class="table_body_item" data-id="type_1" data-price="13110">
+                      <input type="checkbox" name="rate change" id="rate_1" oninput="calcParams();">
                       <label for="rate_1">
                         <div class="table_bodyItem_name">ТНВД 33-10</div>
                         <div class="table_bodyItem_product">ЯЗДА</div>
                         <div class="table_bodyItem_brand">КамАЗ 740.10, 740.10-20</div>
-                        <div class="table_bodyItem_price">13400</div>
+                        <div class="table_bodyItem_price">13401</div>
                       </label>
                     </li>
-                    <li class="table_body_item">
-                      <input type="checkbox" name="rate change" id="rate_2">
+                    <li class="table_body_item" data-id="type_2" data-price="13210">
+                      <input type="checkbox" name="rate change" id="rate_2" oninput="calcParams();">
                       <label for="rate_2">
                         <div class="table_bodyItem_name">ТНВД 33-10</div>
                         <div class="table_bodyItem_product">ЯЗДА</div>
                         <div class="table_bodyItem_brand">КамАЗ 740.10, 740.10-20</div>
-                        <div class="table_bodyItem_price">13400</div>
+                        <div class="table_bodyItem_price">13402</div>
                       </label>
                     </li>
-                    <li class="table_body_item">
-                      <input type="checkbox" name="rate change" id="rate_3">
+                    <li class="table_body_item" data-id="type_3" data-price="13310">
+                      <input type="checkbox" name="rate change" id="rate_3" oninput="calcParams();">
                       <label for="rate_3">
                         <div class="table_bodyItem_name">ТНВД 33-10</div>
                         <div class="table_bodyItem_product">ЯЗДА</div>
                         <div class="table_bodyItem_brand">КамАЗ 740.10, 740.10-20</div>
-                        <div class="table_bodyItem_price">13400</div>
+                        <div class="table_bodyItem_price">13403</div>
                       </label>
                     </li>
-                    <li class="table_body_item">
-                      <input type="checkbox" name="rate change" id="rate_4">
+                    <li class="table_body_item" data-id="type_4" data-price="13410">
+                      <input type="checkbox" name="rate change" id="rate_4" oninput="calcParams();">
                       <label for="rate_4">
                         <div class="table_bodyItem_name">ТНВД 33-10</div>
                         <div class="table_bodyItem_product">ЯЗДА</div>
                         <div class="table_bodyItem_brand">КамАЗ 740.10, 740.10-20</div>
-                        <div class="table_bodyItem_price">13400</div>
+                        <div class="table_bodyItem_price">13404</div>
                       </label>
                     </li>
                   </ul>
@@ -196,7 +199,7 @@
                     </div>
                     <div class="table_bottom_preview"> 
                       <div class="table_bottom_count">Выбранное кол-во услуг: <span class="count_rate">2</span></div>
-                      <div class="table_botttom_price">Стоимость: <span class="count_rate">3000</span></div>
+                      <div class="table_botttom_price">Стоимость: <span class="count_price">3000</span></div>
                     </div>
                   </div>
                 </div>
@@ -205,19 +208,21 @@
           </div>
         </section>
         <section class="security"> 
-          <div class="section_in"> 
-            <div class="security_main"> 
-              <div class="security_content">
-                <h4>Наши гарантии</h4><strong>При полном ремонте ТНВД гарантия 6 месяцев!</strong>
-                <p>На форсунки от Евро 0 до Евро 6 гарантия не распространяется в связи с низким качеством топлива.</p>
-              </div>
-              <div class="security_content_txt">
-                <ul> 
-                  <li><span>16.05.2018</span> Ремонт форсунок BOSCH пьезо ! на автомобили AUDI, BMW , MERCEDES, RANGE ROVER...</li>
-                  <li><span>22.01.2018</span> В Н И М А Н И Е ! Знак "Движение грузовых запрещено" разрешает проезд на ремонт !</li>
-                  <li><span>21.03.2017</span> АЗПИ - Сервис Мы официальный представитель АЗПИ. Ремонт продукции Алтайского завода.</li>
-                  <li><span>25.01.2010</span> РЕМОНТИРУЕМ COMMON RAIL Ремонт форсунок BOSCH, DELPHI, DENSO, АЗПИ, CATERPILLAR, PERKINS 2645A751, 2645A747</li>
-                </ul>
+          <div class="section_in">
+            <div class="security_main_w"> 
+              <h4>Наши гарантии</h4>
+              <div class="security_main"> 
+                <div class="security_content"><span>При полном ремонте ТНВД гарантия 6 месяцев!</span>
+                  <p>На форсунки от Евро 0 до Евро 6 гарантия не распространяется в связи с низким качеством топлива.</p>
+                </div>
+                <div class="security_content_txt">
+                  <ul> 
+                    <li><span>16.05.2018</span> Ремонт форсунок BOSCH пьезо ! на автомобили AUDI, BMW , MERCEDES, RANGE ROVER...</li>
+                    <li><span>22.01.2018</span> В Н И М А Н И Е ! Знак "Движение грузовых запрещено" разрешает проезд на ремонт !</li>
+                    <li><span>21.03.2017</span> АЗПИ - Сервис Мы официальный представитель АЗПИ. Ремонт продукции Алтайского завода.</li>
+                    <li><span>25.01.2010</span> РЕМОНТИРУЕМ COMMON RAIL Ремонт форсунок BOSCH, DELPHI, DENSO, АЗПИ, CATERPILLAR, PERKINS 2645A751, 2645A747</li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
@@ -241,7 +246,7 @@
                 <div class="action_submit_group">
                   <div class="btn action_btn"> 
                     <button type="submit">
-                      <p></p>
+                      <p>Оставить заявку</p>
                       <div class="btn_icon"> 
                         <svg class="icon icon-arrow ">
                           <use xlink:href="i/sprite/sprite.svg#arrow"></use>
@@ -256,7 +261,7 @@
           </div>
         </section>
         <section class="reviews"> 
-          <div class="secttion_in"> 
+          <div class="section_in"> 
             <div class="reviews_main"> 
               <div class="section_title"> 
                 <h5>Отзывы о нас</h5>
@@ -269,7 +274,7 @@
                       <p>Имя Фамилия</p>
                     </div>
                   </div>
-                  <div class="reviews_item_txt">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</div>
+                  <div class="reviews_item_txt">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna. </br></br>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat... Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna. </br></br>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat... Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna. </br></br>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat...</div>
                   <div class="reviews_btn_more"> 
                     <p>Показать больше</p>
                     <div class="reviews_btnMore_icon"> 
@@ -286,7 +291,7 @@
                       <p>Имя Фамилия</p>
                     </div>
                   </div>
-                  <div class="reviews_item_txt">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat...</div>
+                  <div class="reviews_item_txt">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna. </br></br>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat...</div>
                 </li>
                 <li class="reviews_item"> 
                   <div class="reviews_item_head"> 
@@ -295,7 +300,7 @@
                       <p>Имя Фамилия</p>
                     </div>
                   </div>
-                  <div class="reviews_item_txt">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat...</div>
+                  <div class="reviews_item_txt">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna. </br></br>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat...</div>
                 </li>
                 <li class="reviews_item"> 
                   <div class="reviews_item_head"> 
@@ -304,7 +309,7 @@
                       <p>Имя Фамилия</p>
                     </div>
                   </div>
-                  <div class="reviews_item_txt">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat...</div>
+                  <div class="reviews_item_txt">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna. </br></br>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat...</div>
                 </li>
               </ul>
               <div class="btn reviews_more"> 
@@ -327,12 +332,12 @@
                 <h6>Галерея</h6>
               </div>
               <div class="gallery_nav"> 
-                <div class="gallery_nav_btn nav_prev"> 
+                <div class="gallery_nav_btn nav_prev btn"> 
                   <svg class="icon icon-arrow-slider ">
                     <use xlink:href="i/sprite/sprite.svg#arrow-slider"></use>
                   </svg>
                 </div>
-                <div class="gallery_nav_btn nav_next"> 
+                <div class="gallery_nav_btn nav_next btn"> 
                   <svg class="icon icon-arrow-slider ">
                     <use xlink:href="i/sprite/sprite.svg#arrow-slider"></use>
                   </svg>
@@ -409,8 +414,7 @@
             </div>
           </div>
         </section>
-        <div class="map">
-           <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Ac7127972f7f6e40667e37af3bd1ea971eabfa66374c92d253f88dc6ea76b809c&amp;width=100%25&amp;height=100%&amp;lang=ru_RU&amp;scroll=false"></script>		</div>
+        <div class="map"><script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Ac7127972f7f6e40667e37af3bd1ea971eabfa66374c92d253f88dc6ea76b809c&amp;width=100%25&amp;height=100%&amp;lang=ru_RU&amp;scroll=false"></script></div>
       </div>
       <footer class="footer"> 
         <div class="section_in"> 
@@ -418,8 +422,8 @@
             <div class="footer_col_left"> 
               <div class="footer_copyright">© 2022 Все права защищены</div>
               <div class="footer_policy"> <a href="#">Политика конфиденциальности</a></div>
-              <div class="footer_policy"> <a href="#"> <img src="i/arkada.png" alt=""></a></div>
             </div>
+            <div class="footer_arkada-web"> <a href="#"> <img src="i/arkada.png" alt=""></a></div>
           </div>
         </div>
       </footer>
@@ -433,9 +437,9 @@
     <script src="js/menu.js"></script>
     <script src="js/main.js"></script>
     <div class="popup"> 
-      <div class="popup_bg"> </div>
+      <div class="popup_bg remove_popup"> </div>
       <div class="popup_main">
-        <div class="popup_close"> 
+        <div class="popup_close remove_popup"> 
           <svg class="icon icon-close ">
             <use xlink:href="i/sprite/sprite.svg#close"></use>
           </svg>
@@ -453,7 +457,7 @@
           </div>
           <div class="btn popup_btn"> 
             <button type="submit">
-              <p></p>
+              <p>Оставить заявку</p>
               <div class="btn_icon"> 
                 <svg class="icon icon-arrow ">
                   <use xlink:href="i/sprite/sprite.svg#arrow"></use>

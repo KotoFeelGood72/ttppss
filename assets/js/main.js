@@ -14,12 +14,18 @@ let $body,
 
 $(document).ready(function ($) {
 	$body = $('body');
-	
 });
 
 $(window).on('load', function () {
 	updateSizes();
 	loadFunc();
+	popupForms('15px');
+	visibleListPhone();
+	// visibleBtn();
+	if(windowWidth < mediaPoint2) {
+		popupForms('0');
+		burgers();
+	}
 });
 
 $(window).on('resize', function () {
@@ -54,29 +60,6 @@ function updateSizes() {
 	windowHeight = window.innerHeight;
 }
 
-if ('objectFit' in document.documentElement.style === false) {
-	document.addEventListener('DOMContentLoaded', function () {
-		Array.prototype.forEach.call(
-			document.querySelectorAll('img[data-object-fit]'),
-			function (image) {
-				(image.runtimeStyle || image.style).background =
-					'url("' +
-					image.src +
-					'") no-repeat 50%/' +
-					(image.currentStyle
-						? image.currentStyle['object-fit']
-						: image.getAttribute('data-object-fit'));
-
-				image.src =
-					"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='" +
-					image.width +
-					"' height='" +
-					image.height +
-					"'%3E%3C/svg%3E";
-			}
-		);
-	});
-}
 
 function succes(success) {
 	$(success).toggleClass('active');
@@ -130,72 +113,37 @@ $(document).ready(function() {
 
 
 
-// const btnSubmit = document.querySelectorAll('button[type="submit"]')
-// Array.from(btnSubmit).map((item) => {
-// 	item.addEventListener('click', (e) => {
-// 		e.preventDefault();
-// 		succes('.succes')
-// 	})
-// })
+function popupForms(pr) {
+
+	let popupForms = document.querySelector('.popup')
+	let popupFormsTrigger = document.querySelectorAll('.trigger_form')
+	let popupFormsClose = document.querySelectorAll('.remove_popup')
+	let popupFormsSubmit = popupForms.querySelector('button[type="submit"]')
+
+	popupFormsTrigger.forEach(item => {
+		item.addEventListener('click', () => {
+				popupForms.classList.add('visible');
+				win.style.overflow = "hidden";
+				win.style.paddingRight = pr; 
+			})
+	});
 
 
-// function allDefautAnim(bottom = false, start = '-=30% center', end = 'bottom') {
-// 	const paralaxWrapper = Array.from(document.querySelectorAll('.sec_anim')).map(function(el) {
-// 		const arr = Array.from(el.querySelectorAll('.el_anim')).map(function (item, index) {
-// 			const tl = gsap.timeline();
-// 			ScrollTrigger.create({
-// 				animation: tl,
-// 				trigger: el,
-// 				start: start,
-// 				end: end,
-// 				ease: 'none',
-// 			})
-// 			tl.fromTo(item, {
-// 				y: 100, 
-// 				duration: .4,
-// 				autoAlpha: 0,
-// 			}, {
-// 				y: 0,
-// 				autoAlpha: 1,
-// 				delay: 0.1 + (0.1 * index),
-// 			});
-// 		});
-// 	});
-// }
+	Array.from(popupFormsClose).map((item) => {
+		item.addEventListener('click', () => {
+			popupForms.classList.remove('visible')
+			win.style.overflow = "";
+			win.style.paddingRight = ""; 
+		})
+	})
 
-// function popupForms(pr) {
-
-// 	let popupForms = document.querySelector('.callback')
-// 	let popupFormsTrigger = document.querySelectorAll('.btn_popup')
-// 	let popupFormsClose = document.querySelectorAll('.remove_popup')
-// 	let popupFormsSubmit = popupForms.querySelector('button[type="submit"]')
-// 	const burgerPopup = document.querySelector('.burger')
-	
-// 	Array.from(popupFormsTrigger).map((item) => {
-// 		item.addEventListener('click', () => {
-// 			popupForms.classList.add('active');
-// 			win.style.overflow = "hidden";
-// 			win.style.paddingRight = pr; 
-// 			burgerPopup.classList.remove('active')
-// 		})
-// 	})
-
-
-// 	Array.from(popupFormsClose).map((item) => {
-// 		item.addEventListener('click', () => {
-// 			popupForms.classList.remove('active')
-// 			win.style.overflow = "";
-// 			win.style.paddingRight = ""; 
-// 		})
-// 	})
-
-// 	popupFormsSubmit.addEventListener('click', () => {
-// 		popupForms.classList.remove('active')
-// 		win.style.overflow = "";
-// 		win.style.paddingRight = ""; 
-// 		succes('.succes')
-// 	})
-// }
+	popupFormsSubmit.addEventListener('click', () => {
+		popupForms.classList.remove('visible')
+		win.style.overflow = "";
+		win.style.paddingRight = ""; 
+		succes('.succes')
+	})
+}
 
 function burgerMobile() {
 	const triggerBurger = document.querySelector('.header_burger')
@@ -235,36 +183,133 @@ $(document).ready(function()  {
 
 
 
-async function maps(street, city, size) {
 
-	function init() {
-		const geocoder = ymaps.geocode(`${street} ${city}`);
-		geocoder.then(
-			async function (res) {
-				var myMapMobile = await new ymaps.Map('map', {
-						center: res.geoObjects.get(0).geometry.getCoordinates(),
-						zoom: 16,
-					}, {
-						searchControlProvider: 'yandex#search'
-					}),
-					myPlacemark = new ymaps.Placemark(myMapMobile.getCenter(), {
-						balloonContent: `${street} ${city}`
-					}, {
-						iconLayout: 'default#image',
-						iconImageHref: '/i/global/map.svg',
-						iconImageSize: size,
-						iconImageOffset: [-5, -38]
-					});
-
-				myMapMobile.geoObjects
-					.add(myPlacemark)
-				myMapMobile.behaviors.disable('scrollZoom')
-			}
-		);
+const gallerySlider =  new Swiper('.gallery_slider', {
+	centeredSlides: true,
+	centeredSlidesBounds: true,
+	loop: true,
+	grabCursor: true,
+	navigation: {
+    nextEl: '.nav_next',
+    prevEl: '.nav_prev',
+  },
+	breakpoints: {
+		1200: {
+			slidesPerView: 1.8,
+			spaceBetween: 30,
+		},
+		480: {
+			slidesPerView: 2,
+			spaceBetween: 30,
+		},
+		320: {
+			slidesPerView: 1,
+			spaceBetween: 30,
+		}
 	}
-	await ymaps.ready(init);
+})
+
+function visibleListPhone() {
+
+	// let phoneParent = document.querySelector('.header_phone_w')
+	let triggerBtn = document.querySelector('.header_phoneToggle')
+
+	triggerBtn.addEventListener('click', (e) => {
+		if(triggerBtn) {
+			e.target.parentNode.classList.toggle('visible')
+		}
+	})
 
 }
+
+window.onscroll = function showHeader() {
+	var header = document.querySelector('.header');
+	if(window.pageYOffset > 100){
+			header.classList.add('fixed');
+	} else{
+			header.classList.remove('fixed');
+	}
+}
+
+function changeTable() {
+	const select = document.querySelector('#rate_select')
+	let currentItem = document.querySelectorAll('.table_body_item')
+
+	select.addEventListener('change', function(e) {
+		let currentOption = select.options[select.selectedIndex].dataset.type
+		if(e.target.options) {
+			currentItem.forEach(item => {
+				if(currentOption != item.dataset.id){
+					item.classList.remove('visible')
+				} else {
+					item.classList.add('visible')
+				}
+			});
+		}
+	})
+}
+
+changeTable();
+
+
+
+
+
+function calcParams() {
+	let checkInput = document.querySelectorAll('input[type="checkbox"]'); 
+	let counts = document.querySelector('.count_rate')
+	let price = document.querySelector('.count_price')
+
+	let checked = []; 
+	let prices = 0;
+	for (let i = 0; i < checkInput.length; i++) {
+			if (checkInput[i].checked) {
+				checked.push(checkInput[i]);
+				let checkedPrice = checkInput[i].parentElement.dataset.price
+				console.log(+checkedPrice)
+				prices += +checkedPrice
+			}
+		}
+		
+	price.innerHTML = +prices
+	counts.innerHTML = checked.length
+}
+function burgers() {
+	const mobileNav = document.querySelector('.header_nav')
+	const burger = mobileNav.querySelector('ul')
+	let bodyFix = document.body
+	console.log(mobileNav)
+	mobileNav.addEventListener('click', (e) => {
+		// if(e.target.classList.contains('header_burger')) {
+			burger.classList.toggle('visible')
+			e.target.closest('.header').classList.toggle('dark')
+			console.log('Good', e.target.closest('.header'))
+		// }
+	})
+}
+
+
+
+
+
+// function visibleBtn() {
+// 	const count = document.querySelectorAll('.reviews_item_txt')
+	
+// 	Array.from(count).map((item) => {
+// 		const btnShow = document.querySelector('.reviews_btn_more')
+// 		const current = item.innerHTML.length
+// 		if(current <= 90) {
+// 			item.nextElementSibling.style="display: none"
+// 		}
+
+// 		item.nextElementSibling.addEventListener('click', function() {
+// 			item.classList.toggle('active')
+// 			this.style="display: none"
+// 		})
+// 	})
+// }
+
+
 
 
 
